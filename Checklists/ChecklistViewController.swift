@@ -11,26 +11,6 @@ import UIKit
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
     
     
-// MARK:- Add Item ViewController Delegates
-    
-    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController) {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem) {
-//        navigationController?.popViewController(animated: true)
-        
-        let newRowIndex = items.count
-        items.append(item)
-        
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
-        navigationController?.popViewController(animated: true)
-        
-    }
-    
-    
    var items = [ChecklistItem()]
 
     override func viewDidLoad() {
@@ -94,6 +74,25 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
             
         }
     }
+    
+// MARK:- Add Item ViewController Delegates
+        
+    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+        
+    func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem) {
+//        navigationController?.popViewController(animated: true)
+            
+        let newRowIndex = items.count
+        items.append(item)
+            
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        navigationController?.popViewController(animated: true)
+            
+    }
 
     
 // MARK:- Table View Data Source
@@ -117,11 +116,12 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
         
+        let label = cell.viewWithTag(1001) as! UILabel
         
         if item.checked {
-            cell.accessoryType = .checkmark
+            label.text = "√"
         } else {
-            cell.accessoryType = .none
+            label.text = ""
         }
     }
     
