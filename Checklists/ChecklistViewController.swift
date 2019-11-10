@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
     
     
    var items = [ChecklistItem]()
@@ -85,11 +85,11 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     
 // MARK:- Add Item ViewController Delegates
         
-    func addItemViewControllerDidCancel(_ controller: ItemDetailViewController) {
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated: true)
     }
         
-    func addItemViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem) {
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem) {
 //        navigationController?.popViewController(animated: true)
             
         let newRowIndex = items.count
@@ -102,7 +102,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
             
     }
     
-    func addItemViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
         
         if let index = items.firstIndex(of: item) {
             
