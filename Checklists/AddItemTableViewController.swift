@@ -14,6 +14,8 @@ protocol AddItemViewControllerDelegate: class {
     
     func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem)
     
+    func addItemViewController(_ controller: AddItemTableViewController, didFinishEditing item: ChecklistItem)
+    
 }
 
 class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
@@ -23,11 +25,19 @@ class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
     
     weak var delegate: AddItemViewControllerDelegate?
     
+    var itemToEdit: ChecklistItem?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        
+        if let item = itemToEdit {
+            title = "Edit Item"
+            textField.text = item.text
+            doneBarButton.isEnabled = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,10 +57,14 @@ class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
 //        print("Contents of the text field: \(textField.text!)")
 //        navigationController?.popViewController(animated: true)
         
-        let item = ChecklistItem()
-        item.text = textField.text!
-        
-        delegate?.addItemViewController(self, didFinishAdding: item)
+        if let itemToEdit = itemToEdit {
+            itemToEdit.text = textField.text!
+            delegate?.addItemViewController(self, didFinishEditing: itemToEdit)
+        } else {
+            let item = ChecklistItem()
+            item.text = textField.text!
+            delegate?.addItemViewController(self, didFinishAdding: item)
+        }
         
     }
     

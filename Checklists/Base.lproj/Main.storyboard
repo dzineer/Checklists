@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ng6-Cp-Tvx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ng6-Cp-Tvx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,11 +19,11 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cIk-Dg-imF" id="dfj-4B-rcU">
-                                    <rect key="frame" x="0.0" y="0.0" width="350.5" height="41"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="351" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUJ-GH-mEI">
-                                            <rect key="frame" x="40" y="11" width="290.5" height="19"/>
+                                            <rect key="frame" x="40" y="11" width="291" height="19"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="vUJ-GH-mEI" secondAttribute="height" multiplier="326:21" id="f04-N3-Kt0"/>
                                             </constraints>
@@ -51,6 +51,9 @@
                                         <constraint firstAttribute="bottom" secondItem="tlb-y3-iev" secondAttribute="bottom" constant="8" id="tK8-Hs-G6f"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="J6P-qQ-pO8" kind="show" identifier="EditItem" trigger="accessoryAction" id="gBN-AF-gi4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -82,7 +85,7 @@
                             <tableViewSection id="sM9-Cn-jTB">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="QVx-Wm-qQE">
-                                        <rect key="frame" x="0.0" y="53" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="18" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QVx-Wm-qQE" id="EjD-bC-wMl">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -154,4 +157,7 @@
             <point key="canvasLocation" x="79.710144927536234" y="57.589285714285708"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gBN-AF-gi4"/>
+    </inferredMetricsTieBreakers>
 </document>

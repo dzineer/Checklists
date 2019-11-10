@@ -11,7 +11,7 @@ import UIKit
 class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
     
     
-   var items = [ChecklistItem()]
+   var items = [ChecklistItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +44,8 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         let item6 = ChecklistItem()
         item6.text = "Buy groceries"
         items.append(item6)
+        
+        print("liczba w arrayu\(items.count)")
     }
 
 // MARK:- Actions
@@ -65,13 +67,19 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        // 1
         if segue.identifier == "AddItem" {
-            // 2
+            
             let controller = segue.destination as! AddItemTableViewController
-            // 3
             controller.delegate = self
             
+        } else if segue.identifier == "EditItem" {
+            
+            let controller = segue.destination as! AddItemTableViewController
+            controller.delegate = self
+            
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
         }
     }
     
@@ -92,6 +100,18 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         tableView.insertRows(at: indexPaths, with: .automatic)
         navigationController?.popViewController(animated: true)
             
+    }
+    
+    func addItemViewController(_ controller: AddItemTableViewController, didFinishEditing item: ChecklistItem) {
+        
+        if let index = items.firstIndex(of: item) {
+            
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(for: cell, with: item)
+            }
+        }
+        navigationController?.popViewController(animated: true)
     }
 
     
@@ -157,3 +177,12 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     
 }
 
+//extension Collection where Element: Equatable {
+//  /// Returns the first index where the specified value appears in the
+//  /// collection.
+//  @available(swift, deprecated: 5.0, renamed: "firstIndex(of:)")
+//  @inlinable
+//  public func index(of element: Element) -> Index? {
+//    return firstIndex(of: element)
+//  }
+//}
