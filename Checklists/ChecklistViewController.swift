@@ -69,12 +69,12 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         
         if segue.identifier == "AddItem" {
             
-            let controller = segue.destination as! AddItemTableViewController
+            let controller = segue.destination as! ItemDetailViewController
             controller.delegate = self
             
         } else if segue.identifier == "EditItem" {
             
-            let controller = segue.destination as! AddItemTableViewController
+            let controller = segue.destination as! ItemDetailViewController
             controller.delegate = self
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
@@ -85,11 +85,11 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     
 // MARK:- Add Item ViewController Delegates
         
-    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController) {
+    func addItemViewControllerDidCancel(_ controller: ItemDetailViewController) {
         navigationController?.popViewController(animated: true)
     }
         
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem) {
+    func addItemViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem) {
 //        navigationController?.popViewController(animated: true)
             
         let newRowIndex = items.count
@@ -102,7 +102,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
             
     }
     
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishEditing item: ChecklistItem) {
+    func addItemViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
         
         if let index = items.firstIndex(of: item) {
             
