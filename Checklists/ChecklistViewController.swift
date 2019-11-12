@@ -46,6 +46,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         items.append(item6)
         
         print("liczba w arrayu\(items.count)")
+        
+        print("Documents folder is \(documentsDirectory())")
+        print("Data file path is \(dataFilePath())")
     }
 
 // MARK:- Actions
@@ -173,6 +176,16 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         // 2
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
     }
     
 }
