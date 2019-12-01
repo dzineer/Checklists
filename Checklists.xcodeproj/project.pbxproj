@@ -17,6 +17,7 @@
 		76A0659D236DEED9008433F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76A0659B236DEED9008433F1 /* LaunchScreen.storyboard */; };
 		76A7B0612382D3DA00B16283 /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A7B0602382D3DA00B16283 /* AllListsViewController.swift */; };
 		76A7B0632382DCA700B16283 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A7B0622382DCA700B16283 /* Checklist.swift */; };
+		76AAF5D2239427AB00F834FA /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AAF5D1239427AB00F834FA /* ListDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		76A0659E236DEED9008433F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76A7B0602382D3DA00B16283 /* AllListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
 		76A7B0622382DCA700B16283 /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		76AAF5D1239427AB00F834FA /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				768C896B237223A400327E5B /* ItemDetailViewController.swift */,
 				76A7B0602382D3DA00B16283 /* AllListsViewController.swift */,
 				76A7B0622382DCA700B16283 /* Checklist.swift */,
+				76AAF5D1239427AB00F834FA /* ListDetailViewController.swift */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				76A06593236DEED5008433F1 /* SceneDelegate.swift in Sources */,
 				7608B189236EFCB800AD7734 /* ChecklistItem.swift in Sources */,
 				76A7B0632382DCA700B16283 /* Checklist.swift in Sources */,
+				76AAF5D2239427AB00F834FA /* ListDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
