@@ -195,9 +195,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the List" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lKk-2Z-ABo">
-                                                    <rect key="frame" x="20" y="4" width="374" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the List" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lKk-2Z-ABo">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -207,6 +206,12 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="lKk-2Z-ABo" secondAttribute="trailing" constant="20" id="7mq-Fw-VmO"/>
+                                                <constraint firstItem="lKk-2Z-ABo" firstAttribute="top" secondItem="y06-TA-6Jl" secondAttribute="top" id="Q7J-jO-Q8T"/>
+                                                <constraint firstItem="lKk-2Z-ABo" firstAttribute="leading" secondItem="y06-TA-6Jl" secondAttribute="leading" constant="20" id="j5g-o9-R0U"/>
+                                                <constraint firstAttribute="bottom" secondItem="lKk-2Z-ABo" secondAttribute="bottom" id="tB0-pQ-baa"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
