@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate {
+class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
     
     let cellIdentifier = "ChecklistCell"
 //    var lists = [Checklist]()
@@ -37,7 +37,19 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
 //            list.items.append(item)
 //        }
 //        loadChecklists()
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.delegate = self
+        
+        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        
+        if index != -1 {
+            let checklist = dataModel.lists[index]
+            performSegue(withIdentifier: "ShowChecklist", sender: checklist)
+        }
     }
 
     // MARK: - Table view data source
@@ -71,6 +83,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let checklist = dataModel.lists[indexPath.row]
+        UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
         performSegue(withIdentifier: "ShowChecklist", sender: checklist)
     }
     
@@ -114,6 +127,15 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
                 cell.textLabel!.text = checklist.name
             }
             navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    // MARK: Navigation Controller Delegates
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        
+        // Was the back button tapped?
+        if viewController === self {
+            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
         }
     }
 }
