@@ -68,8 +68,8 @@
 		76A0658F236DEED5008433F1 /* Checklists */ = {
 			isa = PBXGroup;
 			children = (
-				76B0F45B23A8188300315DDC /* View Controllers */,
 				76B0F45A23A8184600315DDC /* Model */,
+				76B0F45B23A8188300315DDC /* View Controllers */,
 				76A06590236DEED5008433F1 /* AppDelegate.swift */,
 				76A06592236DEED5008433F1 /* SceneDelegate.swift */,
 				76A06596236DEED5008433F1 /* Main.storyboard */,
