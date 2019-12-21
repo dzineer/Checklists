@@ -29,7 +29,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
 //        list = Checklist(name: "To do")
 //        lists.append(list)
 //
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 //
 //        for list in lists {
 //            let item = ChecklistItem()
@@ -37,6 +37,11 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
 //            list.items.append(item)
 //        }
 //        loadChecklists()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,14 +65,22 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
 //        let cell = makeCell(for: tableView)
+        let cell: UITableViewCell!
+        
+        if let c = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
+            cell = c
+        } else {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+        }
         
         let checklist = dataModel.lists[indexPath.row]
         cell.textLabel!.text = checklist.name
         cell.accessoryType = .detailDisclosureButton
 
+        cell.detailTextLabel!.text = "\(checklist.countUncheckedItems())"
         return cell
     }
     
