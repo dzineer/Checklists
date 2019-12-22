@@ -81,6 +81,7 @@
 				76B0F45A23A8184600315DDC /* Model */,
 				76B0F45B23A8188300315DDC /* View Controllers */,
 				76A06590236DEED5008433F1 /* AppDelegate.swift */,
+				76616F9423B02282009B0B64 /* IconPickerViewController.swift */,
 				76A06599236DEED9008433F1 /* Assets.xcassets */,
 				76A0659E236DEED9008433F1 /* Info.plist */,
 				76A0659B236DEED9008433F1 /* LaunchScreen.storyboard */,
@@ -103,7 +104,6 @@
 		76B0F45B23A8188300315DDC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				76616F9423B02282009B0B64 /* IconPickerViewController.swift */,
 				768C896B237223A400327E5B /* ItemDetailViewController.swift */,
 				76A7B0602382D3DA00B16283 /* AllListsViewController.swift */,
 				76AAF5D1239427AB00F834FA /* ListDetailViewController.swift */,
