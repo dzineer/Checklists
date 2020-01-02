@@ -22,11 +22,16 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet weak var shouldRemindSwitch: UISwitch!
+    @IBOutlet weak var dueDateLabel: UILabel!
+    @IBOutlet weak var datePickerCell: UITableViewCell!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     weak var delegate: ItemDetailViewControllerDelegate?
     
     var itemToEdit: ChecklistItem?
-    
+    var dueDate = Date()
+    var datePickerVisible = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +42,11 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             title = "Edit Item"
             textField.text = item.text
             doneBarButton.isEnabled = true
+            shouldRemindSwitch.isOn = item.shouldRemind
+            dueDate = item.dueDate
         }
+        
+        updateDateLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,12 +66,20 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
 //        print("Contents of the text field: \(textField.text!)")
 //        navigationController?.popViewController(animated: true)
         
-        if let itemToEdit = itemToEdit {
-            itemToEdit.text = textField.text!
-            delegate?.itemDetailViewController(self, didFinishEditing: itemToEdit)
+        if let item = itemToEdit {
+            item.text = textField.text!
+            
+            item.shouldRemind = shouldRemindSwitch.isOn
+            item.dueDate = dueDate
+            
+            delegate?.itemDetailViewController(self, didFinishEditing: item)
         } else {
             let item = ChecklistItem()
             item.text = textField.text!
+            
+            item.shouldRemind = shouldRemindSwitch.isOn
+            item.dueDate = dueDate
+            
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
         
@@ -95,4 +112,18 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
+// MARK: Helper Methods
+    
+    func updateDateLabel() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        dueDateLabel.text = formatter.string(from: dueDate)
+    }
+    
+    func showDatePicker() {
+        datePickerVisible = true
+        let indexPathDatePicker = IndexPath(row: 2, section: 1)
+        tableView.insertRows(at: [indexPathDatePicker], with: .fade)
+    }
 }
