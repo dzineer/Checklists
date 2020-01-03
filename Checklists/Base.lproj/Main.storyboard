@@ -189,7 +189,7 @@
                         <outlet property="datePicker" destination="I2W-yb-Fyf" id="EBa-Cd-bh0"/>
                         <outlet property="datePickerCell" destination="6Tx-D9-e3R" id="jmR-jy-HNE"/>
                         <outlet property="doneBarButton" destination="Jqo-m2-Stg" id="qtk-mW-O3G"/>
-                        <outlet property="dueDateLabel" destination="Qpe-tH-Gel" id="gho-cS-fWO"/>
+                        <outlet property="dueDateLabel" destination="Vu3-dW-uAS" id="BxH-Ov-SEF"/>
                         <outlet property="shouldRemindSwitch" destination="wY8-tv-tgx" id="Var-dg-phr"/>
                         <outlet property="textField" destination="BK9-cf-LPY" id="UJG-Xx-zkq"/>
                     </connections>
@@ -204,6 +204,9 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="I2W-yb-Fyf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                <connections>
+                                    <action selector="dateChanged:" destination="J6P-qQ-pO8" eventType="valueChanged" id="xrw-nv-tn3"/>
+                                </connections>
                             </datePicker>
                         </subviews>
                         <constraints>

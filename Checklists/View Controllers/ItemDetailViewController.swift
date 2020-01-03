@@ -11,9 +11,7 @@ import UIKit
 protocol ItemDetailViewControllerDelegate: class {
     
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController)
-    
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem)
-    
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem)
     
 }
@@ -71,7 +69,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             
             item.shouldRemind = shouldRemindSwitch.isOn
             item.dueDate = dueDate
-            
+            item.scheduleNotification()
             delegate?.itemDetailViewController(self, didFinishEditing: item)
         } else {
             let item = ChecklistItem()
@@ -79,10 +77,15 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             
             item.shouldRemind = shouldRemindSwitch.isOn
             item.dueDate = dueDate
-            
+            item.scheduleNotification()
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
         
+    }
+    
+    @IBAction func dateChanged(_ datePicker: UIDatePicker) {
+        dueDate = datePicker.date
+        updateDateLabel()
     }
     
 // MARK:- Table View Delegates
@@ -123,7 +126,12 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         textField.resignFirstResponder()
         if indexPath.section == 1 && indexPath.row == 1 {
-            showDatePicker()
+//            showDtePicker()
+            if !datePickerVisible {
+                showDatePicker()
+            } else {
+                hideDatePicker()
+            }
         }
     }
     
@@ -168,5 +176,19 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         datePickerVisible = true
         let indexPathDatePicker = IndexPath(row: 2, section: 1)
         tableView.insertRows(at: [indexPathDatePicker], with: .fade)
+        datePicker.setDate(dueDate, animated: false)
+        dueDateLabel.textColor = dueDateLabel.tintColor
+    }
+    
+    func hideDatePicker() {
+        if datePickerVisible {
+            let indexPathDatePicker = IndexPath(row: 2, section: 1)
+            tableView.deleteRows(at: [indexPathDatePicker], with: .fade)
+            dueDateLabel.textColor = UIColor.black
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        hideDatePicker()
     }
 }
