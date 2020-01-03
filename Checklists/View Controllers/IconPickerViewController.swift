@@ -1,11 +1,3 @@
-//
-//  IconPickerViewController.swift
-//  Checklists
-//
-//  Created by Tomasz Oskroba on 12/22/19.
-//  Copyright © 2019 Tomasz Oskroba. All rights reserved.
-//
-
 import UIKit
 
 protocol IconPickerViewControllerDelegate: class {

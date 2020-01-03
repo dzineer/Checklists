@@ -1,42 +1,12 @@
-//
-//  AllListsViewController.swift
-//  Checklists
-//
-//  Created by Tomasz Oskroba on 11/18/19.
-//  Copyright © 2019 Tomasz Oskroba. All rights reserved.
-//
-
 import UIKit
 
 class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
     
     let cellIdentifier = "ChecklistCell"
-//    var lists = [Checklist]()
     var dataModel: DataModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        var list = Checklist(name: "Birthdays")
-//        lists.append(list)
-//
-//        list = Checklist(name: "Groceries")
-//        lists.append(list)
-//
-//        list = Checklist(name: "Cool Apps")
-//        lists.append(list)
-//
-//        list = Checklist(name: "To do")
-//        lists.append(list)
-//
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-//
-//        for list in lists {
-//            let item = ChecklistItem()
-//            item.text = "Item for \(list.name)"
-//            list.items.append(item)
-//        }
-//        loadChecklists()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,14 +30,10 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return dataModel.lists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        
-//        let cell = makeCell(for: tableView)
         let cell: UITableViewCell!
         
         if let c = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
@@ -145,8 +111,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     
     // MARK: Navigation Controller Delegates
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        
-        // Was the back button tapped?
+
         if viewController === self {
             dataModel.indexOfSelectedChecklist = -1
         }

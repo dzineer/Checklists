@@ -1,11 +1,3 @@
-//
-//  ChecklistItem.swift
-//  Checklists
-//
-//  Created by Tomasz Oskroba on 11/3/19.
-//  Copyright © 2019 Tomasz Oskroba. All rights reserved.
-//
-
 import Foundation
 import UserNotifications
 
@@ -47,8 +39,6 @@ class ChecklistItem: NSObject, Codable {
             
             let center = UNUserNotificationCenter.current()
             center.add(request)
-            
-            print("Scheduled: \(request) fo itemId: \(itemID)")
         }
     }
     

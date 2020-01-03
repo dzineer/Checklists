@@ -1,11 +1,3 @@
-//
-//  ListDetailViewController.swift
-//  Checklists
-//
-//  Created by Tomasz Oskroba on 12/1/19.
-//  Copyright © 2019 Tomasz Oskroba. All rights reserved.
-//
-
 import Foundation
 import UIKit
 

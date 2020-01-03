@@ -1,20 +1,10 @@
-//
-//  AddItemTableViewController.swift
-//  Checklists
-//
-//  Created by Tomasz Oskroba on 11/5/19.
-//  Copyright © 2019 Tomasz Oskroba. All rights reserved.
-//
-
 import UIKit
 import UserNotifications
 
 protocol ItemDetailViewControllerDelegate: class {
-    
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController)
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem)
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem)
-    
 }
 
 class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
@@ -56,15 +46,10 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     
 // MARK:- Actions
     @IBAction func cancel() {
-//        navigationController?.popViewController(animated: true)
         delegate?.itemDetailViewControllerDidCancel(self)
     }
     
     @IBAction func done() {
-//
-//        print("Contents of the text field: \(textField.text!)")
-//        navigationController?.popViewController(animated: true)
-        
         if let item = itemToEdit {
             item.text = textField.text!
             
@@ -81,7 +66,6 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
             item.scheduleNotification()
             delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
-        
     }
     
     @IBAction func dateChanged(_ datePicker: UIDatePicker) {
@@ -95,7 +79,6 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         if switchControl.isOn {
             let center = UNUserNotificationCenter.current()
             center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-                
             }
         }
     }
@@ -138,7 +121,6 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         textField.resignFirstResponder()
         if indexPath.section == 1 && indexPath.row == 1 {
-//            showDtePicker()
             if !datePickerVisible {
                 showDatePicker()
             } else {
@@ -166,12 +148,10 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         doneBarButton.isEnabled = !newText.isEmpty
         
         return true
-        
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         doneBarButton.isEnabled = false
-        
         return true
     }
     
